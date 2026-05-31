@@ -78,10 +78,17 @@ h1 {
 
 .forecast-card {
   display: grid;
-  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
   min-height: 310px;
   padding: 26px 18px;
   text-align: center;
+}
+
+.forecast-slot {
+  display: grid;
+  justify-items: center;
 }
 
 .weather-icon {
@@ -175,6 +182,7 @@ h1 {
   }
 
   .forecast-card {
+    grid-template-columns: 1fr;
     min-height: 280px;
   }
 }

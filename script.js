@@ -1,8 +1,5 @@
 const forecastButton = document.querySelector("#forecastButton");
-const weatherIcon = document.querySelector("#weatherIcon");
-const weatherText = document.querySelector("#weatherText");
-const temperatureText = document.querySelector("#temperatureText");
-const messageText = document.querySelector("#messageText");
+const forecastSlots = document.querySelectorAll(".forecast-slot");
 
 const moods = [
   {
@@ -43,13 +40,16 @@ const moods = [
 ];
 
 forecastButton.addEventListener("click", () => {
-  const mood = pickRandom(moods);
-  const temperature = randomNumber(mood.min, mood.max);
+  // &#22806;&#37096;&#36890;&#20449;&#12420;&#20491;&#20154;&#24773;&#22577;&#12434;&#20351;&#12431;&#12378;&#12289;&#21508;&#26178;&#38291;&#24111;&#12434;&#12525;&#12540;&#12459;&#12523;&#12398;&#37197;&#21015;&#12363;&#12425;&#12521;&#12531;&#12480;&#12512;&#12395;&#34920;&#31034;&#12375;&#12414;&#12377;&#12290;
+  forecastSlots.forEach((slot) => {
+    const mood = pickRandom(moods);
+    const temperature = randomNumber(mood.min, mood.max);
 
-  weatherIcon.textContent = mood.icon;
-  weatherText.textContent = mood.weather;
-  temperatureText.textContent = `${temperature}\u2103`;
-  messageText.textContent = mood.message;
+    slot.querySelector(".weather-icon").textContent = mood.icon;
+    slot.querySelector("h2").textContent = mood.weather;
+    slot.querySelector(".temperature").textContent = `${temperature}\u2103`;
+    slot.querySelector(".message").textContent = mood.message;
+  });
 });
 
 function pickRandom(items) {
